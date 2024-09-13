@@ -1,0 +1,87 @@
+from tkinter import *
+from tkinter import filedialog
+
+
+def entrer():
+    import sqlite3
+    conn=sqlite.connect('/home/azedine/quiz_question.db')
+    cur=conn.cursor()
+    cur.execute(''' ''')
+
+
+    cur.close()
+    conn.close()
+    
+
+
+
+bd={'question1':'réponse1','question2':'réponse2','question3':'réponse3','question4':'réponse4','question5':'réponse5'}
+# fonctions générales
+#-------------------------------------------------------------------------------------------------------------------------
+def suivant():
+    pass
+#--------------------------------------------------------------------------------------------------------------------------
+def enregistrer():
+    filedialog.asksaveasfile(title='Enregistrer',filetypes=[('Fichiers textes','.txt')])
+def ouvrir():
+    filedialog.askopenfilename(title='ouvrir',filetypes=[('fichiers textes','.txt')])
+def quitter():
+    app.destroy()
+#--------------------------------------------------------------------------------------------------------------------------
+app=Tk()
+app.title("Jeu quiz question")
+app.geometry('800x700')
+app.configure(bg='blue')
+#La barre de menus
+menubar=Menu(app)
+app.configure(menu=menubar)
+#fichier
+menufichier=Menu(menubar,tearoff=0)
+menubar.add_cascade(label="Fichier",menu=menufichier)
+
+menufichier.add_command(label='Nouveau')
+menufichier.add_command(label='Enregistrer',command=enregistrer)
+menufichier.add_command(label='Enregistrer sous',command=enregistrer)
+menufichier.add_command(label='Ouvrir',command=ouvrir)
+menufichier.add_command(label='Quitter')
+#édition
+menuedi=Menu(menubar,tearoff=0)
+menubar.add_cascade(label="Edition",menu=menuedi)
+
+menuedi.add_command(label='Copier')
+menuedi.add_command(label='Couper')
+menuedi.add_command(label='Coller')
+#Outils
+menuoti=Menu(menubar,tearoff=0)
+menubar.add_cascade(label="Outils",menu=menuoti)
+#Affichage
+menuaff=Menu(menubar,tearoff=0)
+menubar.add_cascade(label="Affichage",menu=menuaff)
+#############################################################################
+#d'atutres widgets
+  #Inscription
+lbl0=Label(app,text="s'inscrire",bg='yellow')
+lbl0.place(x=5,y=5)
+lbl01=Label(app,text="Pseudo",bg='ivory')
+lbl01.place(x=5,y=30)
+entr01=Entry(app,width=30)
+entr01.place(x=80,y=30)
+lbl02=Label(app,text="Mot de passe",bg='ivory')
+lbl02.place(x=5,y=60)
+entr02=Entry(app,width=30)
+entr02.place(x=100,y=60)
+btn_save=Button(app,text="Entrer",bg='silver',command=entrer)
+btn_save.place(x=5,y=90)
+######################################################################################
+texte1=Label(app,text="Bienvenue au jeu du collégien!",font=("courrier",20),bg='red')
+texte1.place(x=50,y=130)
+texte2=Label(app,text="Testez vos connaissances en informatique!",font=("courrier",20),bg='orange')
+texte2.place(x=50,y=200)
+
+lbl1=Label(app,text='Question1',bg="yellow",width=50,height=5).pack(side=BOTTOM,padx=5,pady=5)
+lbl2=Label(app,text='Réponse1',bg="purple",width=50,height=5).pack(side=BOTTOM,padx=5,pady=5)
+
+
+
+app.update()
+app.mainloop()
