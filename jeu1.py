@@ -1,24 +1,21 @@
-from tkinter import *
-from tkinter.font import Font
-#les fonctions qui gèrent les tâches
-def sauter():
-    pass
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Mar 28 21:54:04 2025
 
-#la fenête principarle
-racine=Tk()
-racine.geometry('500x400')
-racine.title("Commencer votre jeu")
+@author: rah1981
+"""
+ import pygame
+ pygame.init()
+ fen.display.set_mode((600,400))
+ fen.display.set_caption("un jeu")
+ 
+ 
+ 
+ running=True
+ While running:
+     for event in pygame.event.get():
+         if event.type == pygame.QUIT:
+             running == False
 
-fImage=PhotoImage(file='jeu.png')
-can=Canvas(racine,width=100,height=100,bg='ivory')
-can.pack(padx=5,pady=5)
-can.create_image(150,100,image=fImage)
-police=Font(size=12,weight='bold')
-                 
-b1=Button(racine,text='Sauter',font=police,bg='aqua',command=sauter)
-b1.pack(SIDE=TOP,padx=5,pad=5)
-
-
-
-
-racine.mainloop()
+ pygame.quit()
